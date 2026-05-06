@@ -5,11 +5,17 @@ import kasRoutes from "./routes/kas.js";
 
 const app = express();
 
+// middleware
 app.use(cors());
 app.use(express.json());
 
+// routes
 app.use("/api/kas", kasRoutes);
 
-app.listen(5000, "0.0.0.0", () => {
-  console.log("Server jalan di http://10.126.246.6:5000");
+// port wajib pakai ini (Render)
+const PORT = process.env.PORT || 3000;
+
+// listen (HANYA 1)
+app.listen(PORT, () => {
+  console.log("Server jalan di port " + PORT);
 });
